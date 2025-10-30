@@ -17,3 +17,19 @@ layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 scale = Vector2(2, 2)
+
+[node name="TextureRect1" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 200.0
+offset_right = 300.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 400.0
+offset_right = 500.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)

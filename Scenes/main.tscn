@@ -113,24 +113,11 @@ scale = Vector2(1, 1.56)
 color = Color(0.28485027, 0.28485027, 0.28485027, 1)
 
 [node name="Image Gen" parent="." instance=ExtResource("2_bo1nx")]
+unique_name_in_owner = true
 z_index = 1
 offset_left = -279.0
 offset_top = -93.0
 offset_right = -279.0
-offset_bottom = -93.0
-
-[node name="Image Gen2" parent="." instance=ExtResource("2_bo1nx")]
-z_index = 1
-offset_left = -80.0
-offset_top = -93.0
-offset_right = -80.0
-offset_bottom = -93.0
-
-[node name="Image Gen3" parent="." instance=ExtResource("2_bo1nx")]
-z_index = 1
-offset_left = 100.0
-offset_top = -93.0
-offset_right = 100.0
 offset_bottom = -93.0
 
 [connection signal="input_event" from="HandleBar" to="." method="_on_handle_bar_input_event"]
