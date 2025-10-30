@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd7vqxtxd3yw0"]
+
+[ext_resource type="Script" uid="uid://bfkk6c7aoca5m" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://f5la80dm7366" path="res://Scenes/image_gen.tscn" id="2_bo1nx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
+size = Vector2(38, 356)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bo1nx"]
+font_size = 40
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_jjgbg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.89804304, 0.9666676)
+zoom = Vector2(0.835, 0.835)
+
+[node name="HandleBar" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="HandleBarArea" type="CollisionShape2D" parent="HandleBar"]
+top_level = true
+z_index = 1
+position = Vector2(490, -75)
+shape = SubResource("RectangleShape2D_jjgbg")
+
+[node name="MainScreen" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -356.0
+offset_top = -281.0
+offset_right = 414.0
+offset_bottom = 269.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="InnerScreen" type="ColorRect" parent="MainScreen"]
+z_index = 1
+layout_mode = 0
+offset_left = 43.0
+offset_top = 40.0
+offset_right = 727.0
+offset_bottom = 510.0
+mouse_filter = 2
+
+[node name="HandleTop" type="ColorRect" parent="."]
+z_index = 1
+offset_left = 525.3002
+offset_top = -263.50027
+offset_right = 580.3008
+offset_bottom = -192.08487
+rotation = 1.5707964
+mouse_filter = 2
+color = Color(0.5882353, 0, 0, 1)
+
+[node name="HandleMid" type="ColorRect" parent="HandleTop"]
+z_index = -1
+layout_mode = 0
+offset_left = 41.500275
+offset_top = 55.30017
+offset_right = 81.500275
+offset_bottom = 383.30017
+rotation = -1.5707964
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HandleBottom" type="ColorRect" parent="HandleTop"]
+z_index = -1
+layout_mode = 0
+offset_left = 329.50027
+offset_top = 54.60968
+offset_right = 369.50027
+offset_bottom = 116.25818
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Money" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -655.0
+offset_top = -197.0
+offset_right = -498.0
+offset_bottom = -126.0
+text = "Money:"
+label_settings = SubResource("LabelSettings_bo1nx")
+uppercase = true
+
+[node name="Hiders" type="Node" parent="."]
+
+[node name="HiderTop" type="ColorRect" parent="Hiders"]
+z_index = 3
+offset_left = -356.0
+offset_top = -323.0
+offset_right = 414.0
+offset_bottom = -281.0
+color = Color(0.25202748, 0.2520277, 0.25202763, 1)
+
+[node name="HiderTop2" type="ColorRect" parent="Hiders"]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+offset_left = -356.0
+offset_top = -401.475
+offset_right = 414.0
+offset_bottom = -322.475
+color = Color(0.25202748, 0.2520277, 0.25202763, 1)
+
+[node name="HiderBottom" type="ColorRect" parent="Hiders"]
+z_index = 3
+offset_left = -356.0
+offset_top = 269.0
+offset_right = 414.0
+offset_bottom = 345.43588
+scale = Vector2(1, 1.56)
+color = Color(0.28485027, 0.28485027, 0.28485027, 1)
+
+[node name="Image Gen" parent="." instance=ExtResource("2_bo1nx")]
+z_index = 1
+offset_left = -279.0
+offset_top = -93.0
+offset_right = -279.0
+offset_bottom = -93.0
+
+[node name="Image Gen2" parent="." instance=ExtResource("2_bo1nx")]
+z_index = 1
+offset_left = -80.0
+offset_top = -93.0
+offset_right = -80.0
+offset_bottom = -93.0
+
+[node name="Image Gen3" parent="." instance=ExtResource("2_bo1nx")]
+z_index = 1
+offset_left = 100.0
+offset_top = -93.0
+offset_right = 100.0
+offset_bottom = -93.0
+
+[connection signal="input_event" from="HandleBar" to="." method="_on_handle_bar_input_event"]

@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="GodotProjekt1"
+run/main_scene="uid://cd7vqxtxd3yw0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.34934682, 0.28883645, 0.2443156, 1)
