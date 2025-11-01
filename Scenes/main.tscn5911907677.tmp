@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd7vqxtxd3yw0"]
+[gd_scene load_steps=8 format=3 uid="uid://cd7vqxtxd3yw0"]
 
 [ext_resource type="PackedScene" uid="uid://f5la80dm7366" path="res://Scenes/image_gen.tscn" id="2_bo1nx"]
 [ext_resource type="AudioStream" uid="uid://dcs3l1degc3n0" path="res://Sounds/ding-402325.mp3" id="3_8gbba"]
-[ext_resource type="Script" uid="uid://cmqk727iwa1q3" path="res://Scripts/buttons/texture_button_3x.gd" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://dvjh8x7rais2k" path="res://Scenes/Buttons/texture_button3X.tscn" id="4_kry3j"]
-[ext_resource type="Script" uid="uid://1uxl0v7m0gv8" path="res://Scripts/buttons/texture_button_5x.gd" id="5_kry3j"]
-[ext_resource type="Script" uid="uid://wugmvkxxdy8w" path="res://Scripts/buttons/texture_button_10x.gd" id="6_21xkr"]
+[ext_resource type="Texture2D" uid="uid://bbfxwkrk6o2l1" path="res://Assets/GreenButtonUnpressed-removebg-preview.png" id="4_kry3j"]
+[ext_resource type="Texture2D" uid="uid://chs2cachs2uit" path="res://Assets/GreenButtonPressed-removebg-preview.png" id="5_21xkr"]
+[ext_resource type="PackedScene" uid="uid://bxouoqj0ouovg" path="res://Scenes/button.tscn" id="5_kry3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
 size = Vector2(38, 356)
@@ -125,35 +124,45 @@ volume_db = -5.0
 
 [node name="ButtonsMulti" type="Node" parent="."]
 
-[node name="TextureButton" parent="ButtonsMulti" instance=ExtResource("4_kry3j")]
-offset_left = -217.0
-offset_top = 298.0
-offset_right = -143.0
-offset_bottom = 352.0
-script = ExtResource("4_jjvhh")
+[node name="Button3X" type="Node" parent="ButtonsMulti"]
 
-[node name="TextureButton2" parent="ButtonsMulti" instance=ExtResource("4_kry3j")]
-offset_left = -25.0
-offset_top = 298.0
-offset_right = 49.0
-offset_bottom = 352.0
-script = ExtResource("5_kry3j")
+[node name="TextureButton" type="TextureButton" parent="ButtonsMulti/Button3X"]
+z_index = 3
+offset_left = -212.0
+offset_top = 287.0
+offset_right = -138.0
+offset_bottom = 341.0
+scale = Vector2(1.25, 1.25)
+toggle_mode = true
+texture_normal = ExtResource("4_kry3j")
+texture_pressed = ExtResource("5_21xkr")
+ignore_texture_size = true
+stretch_mode = 3
 
-[node name="TextureButton3" parent="ButtonsMulti" instance=ExtResource("4_kry3j")]
-offset_left = 175.0
-offset_top = 298.0
-offset_right = 249.0
-offset_bottom = 352.0
-script = ExtResource("6_21xkr")
+[node name="MultiplyButton1" type="Label" parent="ButtonsMulti/Button3X"]
+unique_name_in_owner = true
+z_index = 4
+offset_left = -175.0
+offset_top = 293.0
+offset_right = -135.0
+offset_bottom = 316.0
+scale = Vector2(1.3, 1.3)
+text = "3x"
+
+[node name="Button5X" parent="ButtonsMulti" instance=ExtResource("5_kry3j")]
+offset_left = 17.0
+offset_top = 284.0
+offset_right = 17.0
+offset_bottom = 284.0
 
 [node name="InterfaceLabels" type="Node" parent="."]
 
 [node name="Multiplier+Cost1" type="Label" parent="InterfaceLabels"]
 unique_name_in_owner = true
 z_index = 3
-offset_left = -270.0
+offset_left = -250.0
 offset_top = -195.0
-offset_right = 22.0
+offset_right = 42.0
 offset_bottom = -140.5625
 theme_override_colors/font_color = Color(1, 1, 0.25882354, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -164,9 +173,9 @@ uppercase = true
 [node name="Money" type="Label" parent="InterfaceLabels"]
 unique_name_in_owner = true
 z_index = 3
-offset_left = -270.0
+offset_left = -250.0
 offset_top = 150.0
-offset_right = -117.0
+offset_right = -97.0
 offset_bottom = 204.4375
 theme_override_colors/font_color = Color(1, 1, 0.25882354, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -177,9 +186,9 @@ uppercase = true
 [node name="Won" type="Label" parent="InterfaceLabels"]
 unique_name_in_owner = true
 z_index = 3
-offset_left = 110.0
+offset_left = 125.0
 offset_top = 150.0
-offset_right = 155.0
+offset_right = 170.0
 offset_bottom = 173.0
 scale = Vector2(2.5, 2.5)
 theme_override_colors/font_color = Color(1, 1, 0.25882354, 1)
@@ -189,9 +198,9 @@ text = "WON:"
 [node name="SpinCost" type="Label" parent="InterfaceLabels"]
 unique_name_in_owner = true
 z_index = 3
-offset_left = 110.0
+offset_left = 125.0
 offset_top = -195.0
-offset_right = 155.0
+offset_right = 170.0
 offset_bottom = -172.0
 scale = Vector2(2.5, 2.5)
 theme_override_colors/font_color = Color(1, 1, 0.25882354, 1)
@@ -199,6 +208,4 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "COST:"
 
 [connection signal="input_event" from="HandleBar" to="." method="_on_handle_bar_input_event"]
-[connection signal="toggled" from="ButtonsMulti/TextureButton" to="Image Gen" method="_on_texture_button_toggled"]
-[connection signal="toggled" from="ButtonsMulti/TextureButton2" to="Image Gen" method="_on_texture_button_2_toggled"]
-[connection signal="toggled" from="ButtonsMulti/TextureButton3" to="Image Gen" method="_on_texture_button_3_toggled"]
+[connection signal="toggled" from="ButtonsMulti/Button3X/TextureButton" to="Image Gen" method="_on_texture_button_toggled"]

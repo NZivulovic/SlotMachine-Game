@@ -1,8 +1,9 @@
+Control
+Node
 Label
 Label      - Matches the "text" keyword.
 TextureButton
 CheckButton
-Node
 AudioStreamPlayer
 Timer
 TextureRect

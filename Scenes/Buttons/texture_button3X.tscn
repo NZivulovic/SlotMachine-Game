@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvjh8x7rais2k"]
+
+[ext_resource type="Texture2D" uid="uid://bbfxwkrk6o2l1" path="res://Assets/GreenButtonUnpressed-removebg-preview.png" id="1_r6cof"]
+[ext_resource type="Texture2D" uid="uid://chs2cachs2uit" path="res://Assets/GreenButtonPressed-removebg-preview.png" id="2_okmw2"]
+[ext_resource type="Script" uid="uid://foj754ricmf6" path="res://Scenes/multiply_button.gd" id="3_l5h0l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hybk3"]
+font_color = Color(1, 1, 0.25882354, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TextureButton" type="TextureButton"]
+z_index = 4
+offset_right = 74.0
+offset_bottom = 54.0
+scale = Vector2(1.25, 1.25)
+toggle_mode = true
+texture_normal = ExtResource("1_r6cof")
+texture_pressed = ExtResource("2_okmw2")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="MultiplyButton" type="Label" parent="."]
+unique_name_in_owner = true
+z_index = 4
+layout_mode = 0
+offset_left = 26.599997
+offset_top = 1.7
+offset_right = 66.600006
+offset_bottom = 24.7
+scale = Vector2(1.3, 1.3)
+text = "3x"
+label_settings = SubResource("LabelSettings_hybk3")
+script = ExtResource("3_l5h0l")
+
+[connection signal="toggled" from="." to="MultiplyButton" method="_on_texture_button_toggled"]

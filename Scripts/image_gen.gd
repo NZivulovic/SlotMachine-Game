@@ -28,6 +28,8 @@ var roll_chances = PackedFloat32Array([Global.seven_chance, Global.star_chance, 
 
 
 func _ready():
+	$"../ButtonsMulti/TextureButton3".label.position.x += -6
+	$"../ButtonsMulti/TextureButton3".label.position.y += 1
 	%Won.set_visible(0)
 	randomize()
 	_randomize_texture()
@@ -66,7 +68,6 @@ func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _sha
 				%Won.set_visible(0)
 
 
-
 var reward_amount = 0
 
 func check_for_reward():
@@ -82,23 +83,39 @@ func check_for_reward():
 		print('JACKPOT! seven 3x')
 	if reward_amount > 0:
 		current_money += reward_amount
-	else:
-		print("Unlucky")
-		
-	if reward_amount > 0:
 		%Won.set_visible(1)
 		%Won.text = "WON: " + str(reward_amount) + " $"
 		$"../Sounds/WinningDing".play(1)
-
+	else:
+		print("Unlucky")
 
 
 func _on_texture_button_toggled(toggled_on):
 	if toggled_on == true:
 		spin_cost_multiplier = 3
 		%"SpinCost".text = "COST: " + str(spin_cost * spin_cost_multiplier) + " $"
-		%MultiplyButton1.set_position(Vector2(-175.0, 300))
 	else:
 		spin_cost_multiplier = 1
-		%MultiplyButton1.set_position(Vector2(-175.0, 293))
 		%"SpinCost".text = "COST: " + str(spin_cost * spin_cost_multiplier) + " $"
 	%"Multiplier+Cost1".text = "MULTIPLIER: " + str(spin_cost_multiplier) + "X"
+
+
+func _on_texture_button_2_toggled(toggled_on):
+	if toggled_on == true:
+		spin_cost_multiplier = 5
+		%"SpinCost".text = "COST: " + str(spin_cost * spin_cost_multiplier) + " $"
+	else:
+		spin_cost_multiplier = 1
+		%"SpinCost".text = "COST: " + str(spin_cost * spin_cost_multiplier) + " $"
+	%"Multiplier+Cost1".text = "MULTIPLIER: " + str(spin_cost_multiplier) + "X"
+
+
+func _on_texture_button_3_toggled(toggled_on):
+	if toggled_on == true:
+		spin_cost_multiplier = 10
+		%"SpinCost".text = "COST: " + str(spin_cost * spin_cost_multiplier) + " $"
+	else:
+		spin_cost_multiplier = 1
+		%"SpinCost".text = "COST: " + str(spin_cost * spin_cost_multiplier) + " $"
+	%"Multiplier+Cost1".text = "MULTIPLIER: " + str(spin_cost_multiplier) + "X"
+	$"../ButtonsMulti/TextureButton3".label.position.x += -6
