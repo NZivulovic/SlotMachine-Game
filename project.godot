@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Global.gd"
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.34934682, 0.28883645, 0.2443156, 1)

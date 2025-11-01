@@ -1,4 +1,4 @@
-res://Scripts/image_gen.gd
-res://Scenes/image_gen.tscn
 res://Scenes/main.tscn
+res://Scripts/image_gen.gd
+res://Scripts/main.gd
 res://Scripts/Global.gd

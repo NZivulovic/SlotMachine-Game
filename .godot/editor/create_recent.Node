@@ -1,12 +1,14 @@
+Label
+Label      - Matches the "text" keyword.
+TextureButton
+CheckButton
+Node
+AudioStreamPlayer
+Timer
 TextureRect
 Panel
 BoxContainer
-Node
 ColorRect
 Node2D
-Label
 CollisionShape2D
 Area2D
-Camera2D
-Control
-Sprite2D
