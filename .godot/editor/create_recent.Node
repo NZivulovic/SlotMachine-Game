@@ -1,15 +1,14 @@
+TextureButton
+Label
+ColorRect
 Control
 Node
-Label
 Label      - Matches the "text" keyword.
-TextureButton
 CheckButton
 AudioStreamPlayer
 Timer
 TextureRect
 Panel
 BoxContainer
-ColorRect
 Node2D
 CollisionShape2D
-Area2D

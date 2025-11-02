@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd7vqxtxd3yw0"]
+[gd_scene load_steps=10 format=3 uid="uid://cd7vqxtxd3yw0"]
 
+[ext_resource type="PackedScene" uid="uid://c45iu7mohv4ep" path="res://Scenes/GameOverScreen.tscn" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://f5la80dm7366" path="res://Scenes/image_gen.tscn" id="2_bo1nx"]
 [ext_resource type="AudioStream" uid="uid://dcs3l1degc3n0" path="res://Sounds/ding-402325.mp3" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://cmqk727iwa1q3" path="res://Scripts/buttons/texture_button_3x.gd" id="4_jjvhh"]
@@ -21,6 +22,13 @@ shadow_offset = Vector2(2.5, 2.5)
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.89804304, 0.9666676)
 zoom = Vector2(0.835, 0.835)
+
+[node name="GameOverScreen" parent="." instance=ExtResource("1_6bp64")]
+unique_name_in_owner = true
+offset_left = -759.0
+offset_top = -464.0
+offset_right = 741.0
+offset_bottom = 436.0
 
 [node name="HandleBar" type="Area2D" parent="."]
 unique_name_in_owner = true

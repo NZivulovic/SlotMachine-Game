@@ -28,6 +28,7 @@ var roll_chances = PackedFloat32Array([Global.seven_chance, Global.star_chance, 
 
 
 func _ready():
+	%GameOverScreen.visible = false
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
 	$"../ButtonsMulti/TextureButton3".label.position.y += 1
 	%Won.set_visible(0)
@@ -66,6 +67,19 @@ func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _sha
 			%Money.text = "MONEY: " + str(current_money) + " $"
 			if reward_amount == 0:
 				%Won.set_visible(0)
+			if current_money <= 0:
+				%GameOverScreen.visible = true
+				
+				$"../ButtonsMulti/TextureButton".disabled = true
+				$"../ButtonsMulti/TextureButton2".disabled = true
+				$"../ButtonsMulti/TextureButton3".disabled = true
+				
+				if $"../ButtonsMulti/TextureButton".button_pressed == true:
+					$"../ButtonsMulti/TextureButton".label.position.y += -6
+				if $"../ButtonsMulti/TextureButton2".button_pressed == true:
+					$"../ButtonsMulti/TextureButton2".label.position.y += -6
+				if $"../ButtonsMulti/TextureButton3".button_pressed == true:
+					$"../ButtonsMulti/TextureButton3".label.position.y += -6
 
 
 var reward_amount = 0

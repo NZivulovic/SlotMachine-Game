@@ -1,1 +1,4 @@
 res://Scenes/main.tscn
+res://Scenes/GameOverScreen.tscn
+res://Scripts/image_gen.gd
+res://Scripts/Global.gd
