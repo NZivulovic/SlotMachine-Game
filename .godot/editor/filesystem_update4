@@ -1,4 +1,5 @@
-res://Scenes/main.tscn
-res://Scenes/GameOverScreen.tscn
+res://Scripts/game_over_screen.gd
 res://Scripts/image_gen.gd
+res://Scenes/main.tscn
 res://Scripts/Global.gd
+res://Scenes/GameOverScreen.tscn

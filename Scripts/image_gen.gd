@@ -13,7 +13,6 @@ var star_reward_money = Global.star_reward_money
 const sun = preload("res://Assets/Sun.jpg")
 var sun_reward_money = Global.sun_reward_money
 
-
 var textures = [seven, star, sun]
 
 var rng = RandomNumberGenerator.new()
@@ -28,6 +27,7 @@ var roll_chances = PackedFloat32Array([Global.seven_chance, Global.star_chance, 
 
 
 func _ready():
+	
 	%GameOverScreen.visible = false
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
 	$"../ButtonsMulti/TextureButton3".label.position.y += 1
