@@ -1,5 +1,5 @@
-res://Scripts/game_over_screen.gd
 res://Scripts/image_gen.gd
 res://Scenes/main.tscn
-res://Scripts/Global.gd
-res://Scenes/GameOverScreen.tscn
+res://Scenes/Buttons/BasicButton.tscn
+res://Scripts/Buttons/basic_label.gd
+res://Scenes/ItemShop.tscn

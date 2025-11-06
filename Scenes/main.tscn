@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cd7vqxtxd3yw0"]
+[gd_scene load_steps=12 format=3 uid="uid://cd7vqxtxd3yw0"]
 
 [ext_resource type="PackedScene" uid="uid://c45iu7mohv4ep" path="res://Scenes/GameOverScreen.tscn" id="1_6bp64"]
 [ext_resource type="Script" uid="uid://b50qvqiqe6dkv" path="res://Scripts/Global.gd" id="1_344ge"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dvjh8x7rais2k" path="res://Scenes/Buttons/texture_button3X.tscn" id="4_kry3j"]
 [ext_resource type="Script" uid="uid://1uxl0v7m0gv8" path="res://Scripts/buttons/texture_button_5x.gd" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://wugmvkxxdy8w" path="res://Scripts/buttons/texture_button_10x.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://beb50ku0em3x2" path="res://Scenes/Buttons/BasicButton.tscn" id="9_ynf5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
 size = Vector2(38, 356)
@@ -209,7 +210,16 @@ theme_override_colors/font_color = Color(1, 1, 0.25882354, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "COST:"
 
+[node name="MenuButtons" type="Node" parent="."]
+
+[node name="MenuButton1" parent="MenuButtons" instance=ExtResource("9_ynf5e")]
+offset_left = -572.99994
+offset_top = 252.0
+offset_right = -500.99994
+offset_bottom = 305.0
+
 [connection signal="input_event" from="HandleBar" to="." method="_on_handle_bar_input_event"]
 [connection signal="toggled" from="ButtonsMulti/TextureButton" to="Image Gen" method="_on_texture_button_toggled"]
 [connection signal="toggled" from="ButtonsMulti/TextureButton2" to="Image Gen" method="_on_texture_button_2_toggled"]
 [connection signal="toggled" from="ButtonsMulti/TextureButton3" to="Image Gen" method="_on_texture_button_3_toggled"]
+[connection signal="pressed" from="MenuButtons/MenuButton1" to="Image Gen" method="_on_menu_button_1_pressed"]

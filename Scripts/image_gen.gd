@@ -27,7 +27,6 @@ var roll_chances = PackedFloat32Array([Global.seven_chance, Global.star_chance, 
 
 
 func _ready():
-	
 	%GameOverScreen.visible = false
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
 	$"../ButtonsMulti/TextureButton3".label.position.y += 1
@@ -41,6 +40,25 @@ func _ready():
 	%"SpinCost".text = "COST: " + str(spin_cost) + " $"
 	
 
+func _process(_delta):
+	
+	
+	if $"../ButtonsMulti/TextureButton".button_pressed == true:
+		$"../ButtonsMulti/TextureButton2".disabled = true
+		$"../ButtonsMulti/TextureButton3".disabled = true
+		
+	elif $"../ButtonsMulti/TextureButton2".button_pressed == true:
+		$"../ButtonsMulti/TextureButton".disabled = true
+		$"../ButtonsMulti/TextureButton3".disabled = true
+		
+	elif $"../ButtonsMulti/TextureButton3".button_pressed == true:
+		$"../ButtonsMulti/TextureButton".disabled = true
+		$"../ButtonsMulti/TextureButton2".disabled = true
+		
+	else:
+		$"../ButtonsMulti/TextureButton".disabled = false
+		$"../ButtonsMulti/TextureButton2".disabled = false
+		$"../ButtonsMulti/TextureButton3".disabled = false
 
 func _randomize_texture():
 	
@@ -54,7 +72,7 @@ func _randomize_texture():
 		sprite_display1.texture = chosen_texture1
 	if sprite_display2:
 		sprite_display2.texture = chosen_texture2
-		
+	
 
 
 func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
@@ -76,9 +94,11 @@ func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _sha
 				
 				if $"../ButtonsMulti/TextureButton".button_pressed == true:
 					$"../ButtonsMulti/TextureButton".label.position.y += -6
-				if $"../ButtonsMulti/TextureButton2".button_pressed == true:
+					
+				elif $"../ButtonsMulti/TextureButton2".button_pressed == true:
 					$"../ButtonsMulti/TextureButton2".label.position.y += -6
-				if $"../ButtonsMulti/TextureButton3".button_pressed == true:
+					
+				elif $"../ButtonsMulti/TextureButton3".button_pressed == true:
 					$"../ButtonsMulti/TextureButton3".label.position.y += -6
 
 
@@ -133,3 +153,9 @@ func _on_texture_button_3_toggled(toggled_on):
 		%"SpinCost".text = "COST: " + str(spin_cost * spin_cost_multiplier) + " $"
 	%"Multiplier+Cost1".text = "MULTIPLIER: " + str(spin_cost_multiplier) + "X"
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
+
+
+func _on_menu_button_1_pressed():
+	$"../MenuButtons/MenuButton1/BasicLabel".set_position(Vector2(5.085, 10))
+	await get_tree().create_timer(0.025).timeout
+	get_tree().change_scene_to_file("res://Scenes/ItemShop.tscn")

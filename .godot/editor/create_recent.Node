@@ -1,14 +1,14 @@
-TextureButton
-Label
 ColorRect
-Control
 Node
+Control
+SubViewport
+TextureRect
+Sprite2D
+Camera2D
+Label
+TextureButton
+Button
 Label      - Matches the "text" keyword.
 CheckButton
 AudioStreamPlayer
 Timer
-TextureRect
-Panel
-BoxContainer
-Node2D
-CollisionShape2D

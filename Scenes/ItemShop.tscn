@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dts540hcxxcc2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.89804304, 0.9666676)
+zoom = Vector2(0.835, 0.835)
+
+[node name="Shelfs" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shelfs"]
+offset_left = -546.0
+offset_top = -191.0
+offset_right = -355.0
+offset_bottom = -162.0
+color = Color(0.40578818, 0.24915597, 0.016376968, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Shelfs"]
+offset_left = -96.0
+offset_top = -191.0
+offset_right = 95.0
+offset_bottom = -162.0
+color = Color(0.40578818, 0.24915597, 0.016376968, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Shelfs"]
+offset_left = 354.0
+offset_top = -191.0
+offset_right = 544.9996
+offset_bottom = -162.0
+color = Color(0.40578818, 0.24915597, 0.016376968, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Shelfs"]
+offset_left = -546.0
+offset_top = 141.065
+offset_right = -355.0
+offset_bottom = 170.06499
+color = Color(0.40578818, 0.24915597, 0.016376968, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Shelfs"]
+offset_left = -96.0
+offset_top = 141.065
+offset_right = 95.0
+offset_bottom = 170.06499
+color = Color(0.40578818, 0.24915597, 0.016376968, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Shelfs"]
+offset_left = 354.0
+offset_top = 141.065
+offset_right = 544.9996
+offset_bottom = 170.06499
+color = Color(0.40578818, 0.24915597, 0.016376968, 1)

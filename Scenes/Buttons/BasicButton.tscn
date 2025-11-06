@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://beb50ku0em3x2"]
+
+[ext_resource type="Texture2D" uid="uid://bbfxwkrk6o2l1" path="res://Assets/GreenButtonUnpressed-removebg-preview.png" id="1_x2esp"]
+[ext_resource type="Texture2D" uid="uid://chs2cachs2uit" path="res://Assets/GreenButtonPressed-removebg-preview.png" id="2_l1p8p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_46imx"]
+font_size = 13
+
+[node name="TextureButton" type="TextureButton"]
+offset_left = -66.0
+offset_top = -38.0
+offset_right = 6.3199463
+offset_bottom = 15.0
+scale = Vector2(1.7699128, 1.3770602)
+texture_normal = ExtResource("1_x2esp")
+texture_pressed = ExtResource("2_l1p8p")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="BasicLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.084996
+offset_top = 7.2618465
+offset_right = 69.085
+offset_bottom = 30.261847
+text = "Item Shop"
+label_settings = SubResource("LabelSettings_46imx")
