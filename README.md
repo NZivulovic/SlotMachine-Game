@@ -1,6 +1,7 @@
 Update nach einer Woche selbständigem Lernen:
+Main Scripts im repo: image_gen.gd , game_over_screen.gd
 
-<img src="https://github.com/NZivulovic/GodotProject1/blob/68e6eb75f2d75a52bc06770af8c1366e4bdacedb/2025-11-07%2014-41-12.gif" width="2560" height="1440"/>
+<img src="https://github.com/NZivulovic/GodotProject1/blob/68f8cf4ef6636af1962e2c8e88377d07808a1fa5/2025-11-07%2014-41-12(1).gif" width="2560" height="1440"/>
 
 Geplannte Updates:
 - Item Shop mit Items was die chancen erhöhen (Booster, Powerups)
