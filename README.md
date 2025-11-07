@@ -1,7 +1,5 @@
 Update nach einer Woche selbständigem Lernen:
 
-![video](/images/output/video1.gif](https://github.com/NZivulovic/GodotProject1/blob/68e6eb75f2d75a52bc06770af8c1366e4bdacedb/2025-11-07%2014-41-12.gif)
-
 <img src="/images/output/video1.gif](https://github.com/NZivulovic/GodotProject1/blob/68e6eb75f2d75a52bc06770af8c1366e4bdacedb/2025-11-07%2014-41-12.gif" width="250" height="250"/>
 
 Geplannte Updates:
