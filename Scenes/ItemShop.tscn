@@ -1,10 +1,128 @@
-[gd_scene format=3 uid="uid://dts540hcxxcc2"]
+[gd_scene load_steps=11 format=3 uid="uid://dts540hcxxcc2"]
+
+[ext_resource type="PackedScene" uid="uid://boiuee2fo78s3" path="res://Scenes/ItemShop/Items/DiamondToken.tscn" id="1_bw0jw"]
+[ext_resource type="Texture2D" uid="uid://bbfxwkrk6o2l1" path="res://Assets/GreenButtonUnpressed-removebg-preview.png" id="1_j448o"]
+[ext_resource type="Script" uid="uid://c03lsrp28i7hs" path="res://Scripts/item_shop.gd" id="1_rm0e0"]
+[ext_resource type="Texture2D" uid="uid://chs2cachs2uit" path="res://Assets/GreenButtonPressed-removebg-preview.png" id="2_862br"]
+[ext_resource type="Script" uid="uid://b5qrhyxlxye0k" path="res://Scripts/buy_interface.gd" id="2_fjxrw"]
+[ext_resource type="Script" uid="uid://br40sg34k3j2k" path="res://Scripts/buttons/LabelBackButtonBuyMenu.gd" id="5_fjxrw"]
+[ext_resource type="Script" uid="uid://dcbp4oofmc5lv" path="res://Scripts/buttons/LabelBackMenuItemShop.gd" id="5_ifxhq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifxhq"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyjct"]
+font_size = 32
+font_color = Color(1, 1, 0.25882354, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ykgfi"]
+font_size = 32
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_rm0e0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.89804304, 0.9666676)
 zoom = Vector2(0.835, 0.835)
+
+[node name="BuyInterface" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -690.0
+offset_top = -388.0
+offset_right = 690.0
+offset_bottom = 388.0
+color = Color(0.29411766, 0.29411766, 0.29411766, 0.8039216)
+script = ExtResource("2_fjxrw")
+
+[node name="Label" type="Label" parent="BuyInterface"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 167.0
+offset_right = 892.0
+offset_bottom = 270.0
+text = "Are you sure you want to buy a"
+label_settings = SubResource("LabelSettings_ifxhq")
+
+[node name="LabelDescription" type="Label" parent="BuyInterface"]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 287.0
+offset_right = 1068.0
+offset_bottom = 390.0
+label_settings = SubResource("LabelSettings_fyjct")
+horizontal_alignment = 1
+
+[node name="BuyButton" type="TextureButton" parent="BuyInterface"]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 473.0
+offset_right = 716.0
+offset_bottom = 526.0
+texture_normal = ExtResource("1_j448o")
+texture_pressed = ExtResource("2_862br")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="BuyInterface/BuyButton"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 60.0
+offset_bottom = 28.0
+text = "BUY"
+
+[node name="BackButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -608.0
+offset_top = 276.0
+offset_right = -534.0
+offset_bottom = 331.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_j448o")
+texture_pressed = ExtResource("2_862br")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="BackButton"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 64.0
+offset_bottom = 29.0
+text = "< Back"
+script = ExtResource("5_ifxhq")
+
+[node name="BackButtonBuyMenu" type="TextureButton" parent="."]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = 84.0
+offset_right = -58.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_j448o")
+texture_pressed = ExtResource("2_862br")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="BackButtonBuyMenu"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 63.0
+offset_bottom = 29.0
+text = "< Back"
+script = ExtResource("5_fjxrw")
 
 [node name="Shelfs" type="Node" parent="."]
 
@@ -49,3 +167,47 @@ offset_top = 141.065
 offset_right = 544.9996
 offset_bottom = 170.06499
 color = Color(0.40578818, 0.24915597, 0.016376968, 1)
+
+[node name="ItemNameLabels" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="ItemNameLabels"]
+offset_left = -573.0
+offset_top = -358.0
+offset_right = -328.0
+offset_bottom = -307.0
+text = "Diamond Token"
+label_settings = SubResource("LabelSettings_ykgfi")
+
+[node name="Label2" type="Label" parent="ItemNameLabels"]
+offset_left = -101.0
+offset_top = -358.0
+offset_right = 144.0
+offset_bottom = -307.0
+text = "Golden Bell"
+label_settings = SubResource("LabelSettings_ykgfi")
+
+[node name="Label3" type="Label" parent="ItemNameLabels"]
+offset_left = 327.0
+offset_top = -358.0
+offset_right = 581.0
+offset_bottom = -307.0
+text = "Four-Leaf Clover"
+label_settings = SubResource("LabelSettings_ykgfi")
+
+[node name="Label4" type="Label" parent="ItemNameLabels"]
+offset_left = -577.0
+offset_top = -6.0
+offset_right = -323.0
+offset_bottom = 45.0
+text = "Free Spin Ticket"
+label_settings = SubResource("LabelSettings_ykgfi")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="DiamondToken" parent="Items" instance=ExtResource("1_bw0jw")]
+position = Vector2(-446, -245)
+
+[connection signal="pressed" from="BuyInterface/BuyButton" to="BuyInterface" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="BackButton" to="BackButton/Label" method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackButtonBuyMenu" to="BackButtonBuyMenu/Label" method="_on_back_button_pressed"]
+[connection signal="input_event" from="Items/DiamondToken" to="." method="_on_diamond_token_input_event"]

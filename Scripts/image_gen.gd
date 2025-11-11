@@ -17,6 +17,7 @@ var textures = [seven, star, sun]
 
 var rng = RandomNumberGenerator.new()
 var roll_chances = PackedFloat32Array([Global.seven_chance, Global.star_chance, Global.sun_chance])
+var roll_chances_diamond_token = PackedFloat32Array([1, 0, 0])
 
 @onready var sprite_display: TextureRect = $TextureRect
 @onready var sprite_display1: TextureRect = $TextureRect1
@@ -27,12 +28,15 @@ var roll_chances = PackedFloat32Array([Global.seven_chance, Global.star_chance, 
 
 
 func _ready():
+	
 	%GameOverScreen.visible = false
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
 	$"../ButtonsMulti/TextureButton3".label.position.y += 1
 	%Won.set_visible(0)
 	randomize()
+	
 	_randomize_texture()
+	
 	clickable_area.input_event.connect(_on_clickable_area_input_event)
 	
 	%Money.text = "MONEY: " + str(Global.current_money) + " $"
@@ -41,7 +45,6 @@ func _ready():
 	
 
 func _process(_delta):
-	
 	
 	if $"../ButtonsMulti/TextureButton".button_pressed == true:
 		$"../ButtonsMulti/TextureButton2".disabled = true
@@ -59,12 +62,29 @@ func _process(_delta):
 		$"../ButtonsMulti/TextureButton".disabled = false
 		$"../ButtonsMulti/TextureButton2".disabled = false
 		$"../ButtonsMulti/TextureButton3".disabled = false
+		
 
 func _randomize_texture():
 	
 	var chosen_texture = textures[rng.rand_weighted(roll_chances)]
 	var chosen_texture1 = textures[rng.rand_weighted(roll_chances)]
 	var chosen_texture2 = textures[rng.rand_weighted(roll_chances)]
+	
+	
+	if sprite_display:
+		sprite_display.texture = chosen_texture
+	if sprite_display1:
+		sprite_display1.texture = chosen_texture1
+	if sprite_display2:
+		sprite_display2.texture = chosen_texture2
+	
+
+func _randomize_texture_diamond_token():
+	
+	var chosen_texture = textures[rng.rand_weighted(roll_chances_diamond_token)]
+	var chosen_texture1 = textures[rng.rand_weighted(roll_chances_diamond_token)]
+	var chosen_texture2 = textures[rng.rand_weighted(roll_chances_diamond_token)]
+	
 	
 	if sprite_display:
 		sprite_display.texture = chosen_texture
@@ -78,7 +98,11 @@ func _randomize_texture():
 func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			_randomize_texture()
+			if Global.has_diamond_token == 0: 
+				_randomize_texture()
+			if Global.has_diamond_token == 1:
+				_randomize_texture_diamond_token()
+				Global.has_diamond_token = 0
 			check_for_reward()
 			Global.current_money = current_money
 			current_money -= spin_cost * spin_cost_multiplier

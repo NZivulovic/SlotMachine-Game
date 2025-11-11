@@ -24,5 +24,6 @@ offset_left = 5.084996
 offset_top = 7.2618465
 offset_right = 69.085
 offset_bottom = 30.261847
-text = "Item Shop"
+text = "Shop"
 label_settings = SubResource("LabelSettings_46imx")
+horizontal_alignment = 1

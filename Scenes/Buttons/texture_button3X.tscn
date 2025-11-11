@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bbfxwkrk6o2l1" path="res://Assets/GreenButtonUnpressed-removebg-preview.png" id="1_r6cof"]
 [ext_resource type="Texture2D" uid="uid://chs2cachs2uit" path="res://Assets/GreenButtonPressed-removebg-preview.png" id="2_okmw2"]
-[ext_resource type="Script" uid="uid://foj754ricmf6" path="res://Scenes/multiply_button.gd" id="3_l5h0l"]
+[ext_resource type="Script" uid="uid://foj754ricmf6" path="res://Scripts/buttons/multiply_button.gd" id="3_l5h0l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hybk3"]
 font_color = Color(1, 1, 0.25882354, 1)
