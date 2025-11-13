@@ -1,5 +1,7 @@
 extends Node
 
+var money_from_slot = 0
+
 var start_money = 1000
 
 var current_money = 1000

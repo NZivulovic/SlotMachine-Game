@@ -28,7 +28,7 @@ var roll_chances_diamond_token = PackedFloat32Array([1, 0, 0])
 
 
 func _ready():
-	
+	Global.money_from_slot += spin_cost
 	%GameOverScreen.visible = false
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
 	$"../ButtonsMulti/TextureButton3".label.position.y += 1
@@ -178,8 +178,10 @@ func _on_texture_button_3_toggled(toggled_on):
 	%"Multiplier+Cost1".text = "MULTIPLIER: " + str(spin_cost_multiplier) + "X"
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
 
+var spin_rest_money = Global.money_from_slot + Global.current_money
 
 func _on_menu_button_1_pressed():
 	$"../MenuButtons/MenuButton1/BasicLabel".set_position(Vector2(5.085, 10))
+	Global.current_money = current_money
 	await get_tree().create_timer(0.025).timeout
 	get_tree().change_scene_to_file("res://Scenes/ItemShop.tscn")

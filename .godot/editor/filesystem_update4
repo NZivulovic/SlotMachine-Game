@@ -1,13 +1,7 @@
-res://Scenes/main.tscn
-res://Scenes/ItemShop/DiamondToken.tscn
 res://Scenes/ItemShop.tscn
-res://Scripts/buttons/LabelBackButton.gd
-res://Scripts/Global.gd
 res://Scripts/item_shop.gd
-res://Scripts/image_gen.gd
-res://Scenes/ItemShop/ItemTemplate.tscn
 res://Scripts/buy_interface.gd
-res://Scenes/Buttons/BasicButton.tscn
-res://Scripts/trinkets_icons.gd
-res://Scripts/buttons/LabelBackButtonBuyMenu.gd
+res://Scripts/Global.gd
 res://Scripts/buttons/LabelBackMenuItemShop.gd
+res://Scripts/image_gen.gd
+res://Scripts/buttons/LabelBackButtonBuyMenu.gd

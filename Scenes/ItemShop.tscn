@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dts540hcxxcc2"]
+[gd_scene load_steps=12 format=3 uid="uid://dts540hcxxcc2"]
 
 [ext_resource type="PackedScene" uid="uid://boiuee2fo78s3" path="res://Scenes/ItemShop/Items/DiamondToken.tscn" id="1_bw0jw"]
 [ext_resource type="Texture2D" uid="uid://bbfxwkrk6o2l1" path="res://Assets/GreenButtonUnpressed-removebg-preview.png" id="1_j448o"]
@@ -14,6 +14,10 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_fyjct"]
 font_size = 32
 font_color = Color(1, 1, 0.25882354, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1qoc"]
+font_size = 50
+font_color = Color(0.827451, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ykgfi"]
 font_size = 32
@@ -45,18 +49,40 @@ label_settings = SubResource("LabelSettings_ifxhq")
 
 [node name="LabelDescription" type="Label" parent="BuyInterface"]
 layout_mode = 0
-offset_left = 318.0
+offset_left = 278.0
 offset_top = 287.0
-offset_right = 1068.0
+offset_right = 1028.0
 offset_bottom = 390.0
 label_settings = SubResource("LabelSettings_fyjct")
 horizontal_alignment = 1
 
+[node name="NoMoney" type="Label" parent="BuyInterface"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 257.0
+offset_right = 1028.0
+offset_bottom = 360.0
+text = "No Money!"
+label_settings = SubResource("LabelSettings_a1qoc")
+horizontal_alignment = 1
+
+[node name="Cost" type="RichTextLabel" parent="BuyInterface"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 73.0
+offset_right = 1028.0
+offset_bottom = 176.0
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "Cost: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BuyButton" type="TextureButton" parent="BuyInterface"]
 layout_mode = 0
-offset_left = 644.0
+offset_left = 653.0
 offset_top = 473.0
-offset_right = 716.0
+offset_right = 725.0
 offset_bottom = 526.0
 texture_normal = ExtResource("1_j448o")
 texture_pressed = ExtResource("2_862br")
@@ -104,9 +130,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -132.0
+offset_left = -123.0
 offset_top = 84.0
-offset_right = -58.0
+offset_right = -49.0
 offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
