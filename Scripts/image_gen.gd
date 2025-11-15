@@ -28,6 +28,14 @@ var roll_chances_diamond_token = PackedFloat32Array([1, 0, 0])
 
 
 func _ready():
+	$"../AutoPlayButton".disabled = false
+	$"../ButtonsMulti/TextureButton".disabled = false
+	$"../ButtonsMulti/TextureButton2".disabled = false
+	$"../ButtonsMulti/TextureButton3".disabled = false
+	$"../MenuButtons/MenuButton1".disabled = false
+	
+	%JackpotAmount.text = "[color=yellow]JACKPOT: [color=FOREST_GREEN] " + str(Global.incremental_Jackpot_Amount) + " $"
+	$"../AutoPlayButton".get_child(0).text = "Autoplay"
 	Global.money_from_slot += spin_cost
 	%GameOverScreen.visible = false
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
@@ -63,6 +71,8 @@ func _process(_delta):
 		$"../ButtonsMulti/TextureButton2".disabled = false
 		$"../ButtonsMulti/TextureButton3".disabled = false
 		
+
+
 
 func _randomize_texture():
 	
@@ -127,26 +137,39 @@ func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _sha
 
 
 var reward_amount = 0
+var jackpot_triggered = 0
 
 func check_for_reward():
 	reward_amount = 0
 	if sprite_display.texture == sun and sprite_display1.texture == sun and sprite_display2.texture == sun:
 		reward_amount = sun_reward_money * spin_cost_multiplier
+		Global.incremental_Jackpot_Amount += reward_amount
 		print('sun 3x')
-	elif sprite_display.texture == star and sprite_display1.texture == star and sprite_display2.texture == star:
+	if sprite_display.texture == star and sprite_display1.texture == star and sprite_display2.texture == star:
 		reward_amount += star_reward_money * spin_cost_multiplier
+		Global.incremental_Jackpot_Amount += reward_amount
 		print('star 3x')
-	elif sprite_display.texture == seven and sprite_display1.texture == seven and sprite_display2.texture == seven:
-		reward_amount += seven_reward_money * spin_cost_multiplier
+	if sprite_display.texture == seven and sprite_display1.texture == seven and sprite_display2.texture == seven:
+		reward_amount = Global.incremental_Jackpot_Amount
+		jackpot_triggered = 1
 		print('JACKPOT! seven 3x')
 	if reward_amount > 0:
 		current_money += reward_amount
 		%Won.set_visible(1)
 		%Won.text = "WON: " + str(reward_amount) + " $"
 		$"../Sounds/WinningDing".play(1)
-	else:
+		%JackpotAmount.text = "[color=yellow]JACKPOT: [color=FOREST_GREEN] " + str(Global.incremental_Jackpot_Amount) + " $"
+	if jackpot_triggered == 1:
+		Global.incremental_Jackpot_Amount = 0
+		jackpot_triggered = 0
+		%JackpotAmount.text = "[color=yellow]JACKPOT: [color=FOREST_GREEN] " + str(Global.incremental_Jackpot_Amount) + " $"
+	if reward_amount == 0:
 		print("Unlucky")
 
+
+
+#Global.incremental_Jackpot_Amount = 0
+#%JackpotAmount.text = "[color=yellow]JACKPOT: [color=FOREST_GREEN] " + str(Global.incremental_Jackpot_Amount) + " $"
 
 func _on_texture_button_toggled(toggled_on):
 	if toggled_on == true:
@@ -185,3 +208,46 @@ func _on_menu_button_1_pressed():
 	Global.current_money = current_money
 	await get_tree().create_timer(0.025).timeout
 	get_tree().change_scene_to_file("res://Scenes/ItemShop.tscn")
+	
+
+func _on_auto_play_button_toggled(toggled_on):
+	if toggled_on == true:
+		$"../AutoPlayButton/BasicLabel".position.y += 5
+	if toggled_on == false:
+		$"../AutoPlayButton/BasicLabel".position.y -= 5
+
+
+func _on_timer_timeout():
+	if $"../AutoPlayButton".button_pressed == true:
+		if Global.has_diamond_token == 0:
+			_randomize_texture() 
+		if Global.has_diamond_token == 1:
+			_randomize_texture_diamond_token()
+			Global.has_diamond_token = 0
+		check_for_reward()
+		Global.current_money = current_money
+		current_money -= spin_cost * spin_cost_multiplier
+		%Money.text = "MONEY: " + str(current_money) + " $"
+		if reward_amount == 0:
+			%Won.set_visible(0)
+		if current_money <= 0:
+			%GameOverScreen.visible = true
+			$"../AutoPlayButton".button_pressed = false
+			$"../AutoPlayButton".disabled = true
+			$"../ButtonsMulti/TextureButton".disabled = true
+			$"../ButtonsMulti/TextureButton2".disabled = true
+			$"../ButtonsMulti/TextureButton3".disabled = true
+			$"../MenuButtons/MenuButton1".disabled = true
+			
+			$"../ButtonsMulti/TextureButton".disabled = true
+			$"../ButtonsMulti/TextureButton2".disabled = true
+			$"../ButtonsMulti/TextureButton3".disabled = true
+				
+			if $"../ButtonsMulti/TextureButton".button_pressed == true:
+				$"../ButtonsMulti/TextureButton".label.position.y += -6
+				
+			elif $"../ButtonsMulti/TextureButton2".button_pressed == true:
+				$"../ButtonsMulti/TextureButton2".label.position.y += -6
+					
+			elif $"../ButtonsMulti/TextureButton3".button_pressed == true:
+				$"../ButtonsMulti/TextureButton3".label.position.y += -6

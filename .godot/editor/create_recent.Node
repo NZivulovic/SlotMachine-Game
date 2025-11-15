@@ -1,4 +1,5 @@
 RichTextLabel
+Timer
 Label
 ColorRect
 CollisionShape2D
@@ -11,4 +12,3 @@ Control
 SubViewport
 TextureRect
 Camera2D
-Label      - Matches the "text" keyword.

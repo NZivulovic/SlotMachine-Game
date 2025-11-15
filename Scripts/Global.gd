@@ -1,5 +1,7 @@
 extends Node
 
+var incremental_Jackpot_Amount = 0
+
 var money_from_slot = 0
 
 var start_money = 1000
@@ -12,10 +14,10 @@ var seven_chance = 0.025
 var seven_reward_money = 0
 
 var star_chance = 0.15
-var star_reward_money = 0
+var star_reward_money = 200
 
 var sun_chance = 0.30
-var sun_reward_money = 0
+var sun_reward_money = 100
 
 
 # ItemShop
