@@ -2,7 +2,7 @@ Update nach 2 Wochen:
 
 Main Scripts im repo: image_gen.gd, item_shop.gd, buy_interface.gd   - gerne anschauen
 
-![animation](https://github.com/NZivulovic/SlotMachine-Game/blob/8a74e6864742332ed3a6696a19c018a79364526d/Timeline%201.webp)
+![animation](Timeline 1.webp)
 
 
 Geplante Updates:
