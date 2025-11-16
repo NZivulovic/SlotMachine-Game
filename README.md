@@ -1,4 +1,4 @@
-Update nach einer Woche:
+Update nach 2 Wochen:
 
 Main Scripts im repo: image_gen.gd, item_shop.gd, buy_interface.gd   - gerne anschauen
 
