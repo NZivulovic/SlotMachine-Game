@@ -28,3 +28,6 @@ const diamond_token_cost = 500
 #ShopInterface
 
 var diamond_token_selected = 0
+
+# BonusMenu
+var free_spins = 0

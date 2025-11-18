@@ -36,6 +36,7 @@ func _ready():
 	
 	%JackpotAmount.text = "[color=yellow]JACKPOT: [color=FOREST_GREEN] " + str(Global.incremental_Jackpot_Amount) + " $"
 	$"../AutoPlayButton".get_child(0).text = "Autoplay"
+	$"../BonusSpinsButton/BasicLabel".text = "Bonus"
 	Global.money_from_slot += spin_cost
 	%GameOverScreen.visible = false
 	$"../ButtonsMulti/TextureButton3".label.position.x += -6
@@ -50,6 +51,7 @@ func _ready():
 	%Money.text = "MONEY: " + str(Global.current_money) + " $"
 	%"Multiplier+Cost1".text = "MULTIPLIER: " + str(spin_cost_multiplier) + "X"
 	%"SpinCost".text = "COST: " + str(spin_cost) + " $"
+	%FreeSpins.text = "Free spins: " + str(Global.free_spins)
 	
 
 func _process(_delta):
@@ -251,3 +253,12 @@ func _on_timer_timeout():
 					
 			elif $"../ButtonsMulti/TextureButton3".button_pressed == true:
 				$"../ButtonsMulti/TextureButton3".label.position.y += -6
+
+
+
+func _on_bonus_spins_button_pressed():
+	$"../BonusSpinsButton/BasicLabel".position.y += 5
+	await get_tree().create_timer(0.05).timeout
+	$"../BonusMenuBG".visible = true
+	await get_tree().create_timer(0.05).timeout
+	$"../BonusSpinsButton/BasicLabel".position.y -= 5

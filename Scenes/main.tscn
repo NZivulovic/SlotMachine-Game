@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cd7vqxtxd3yw0"]
+[gd_scene load_steps=17 format=3 uid="uid://cd7vqxtxd3yw0"]
 
 [ext_resource type="PackedScene" uid="uid://c45iu7mohv4ep" path="res://Scenes/GameOverScreen.tscn" id="1_6bp64"]
 [ext_resource type="Script" uid="uid://b50qvqiqe6dkv" path="res://Scripts/Global.gd" id="1_344ge"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://beb50ku0em3x2" path="res://Scenes/Buttons/BasicButton.tscn" id="9_ynf5e"]
 [ext_resource type="Script" uid="uid://cxgsfagukgtwt" path="res://Scripts/trinkets_icons.gd" id="10_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://c3i7dlhquhe36" path="res://Assets/icon.svg" id="11_6iyac"]
+[ext_resource type="Script" uid="uid://u4hafmwkbgkk" path="res://Scripts/bonus_menu_bg.gd" id="12_6iyac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
 size = Vector2(38, 356)
@@ -269,6 +270,19 @@ text = "Trinkets:"
 label_settings = SubResource("LabelSettings_bo1nx")
 uppercase = true
 
+[node name="FreeSpins" type="Label" parent="InterfaceLabels"]
+unique_name_in_owner = true
+z_index = 3
+offset_left = 419.0
+offset_top = 327.6667
+offset_right = 503.0
+offset_bottom = 350.00003
+scale = Vector2(2.5, 2.5)
+theme_override_colors/font_color = Color(1, 1, 0.25882354, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Free Spins:"
+
 [node name="MenuButtons" type="Node" parent="."]
 
 [node name="MenuButton1" parent="MenuButtons" instance=ExtResource("9_ynf5e")]
@@ -287,6 +301,19 @@ toggle_mode = true
 [node name="Timer" type="Timer" parent="AutoPlayButton"]
 wait_time = 0.5
 autostart = true
+
+[node name="BonusSpinsButton" parent="." instance=ExtResource("9_ynf5e")]
+offset_left = 435.00006
+offset_top = 247.0
+offset_right = 509.58
+offset_bottom = 300.0
+
+[node name="BasicLabel" parent="BonusSpinsButton" index="0"]
+offset_left = -3.390027
+offset_top = 5.8094883
+offset_right = 77.40489
+offset_bottom = 28.759506
+scale = Vector2(1, 1.0580949)
 
 [node name="TrinketsIcons" type="Node" parent="."]
 script = ExtResource("10_d1ilt")
@@ -311,6 +338,60 @@ label_settings = SubResource("LabelSettings_d1ilt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BonusMenuBG" type="ColorRect" parent="."]
+visible = false
+z_index = 15
+clip_contents = true
+offset_left = -816.0
+offset_top = -478.0
+offset_right = 798.0
+offset_bottom = 480.0
+color = Color(0.3019608, 0.3019608, 0.3019608, 0.8039216)
+script = ExtResource("12_6iyac")
+
+[node name="BackButton" parent="BonusMenuBG" instance=ExtResource("9_ynf5e")]
+z_index = 15
+layout_mode = 0
+offset_left = 641.0
+offset_top = 645.0
+offset_right = 713.31995
+offset_bottom = 698.0
+
+[node name="BuyButton" parent="BonusMenuBG" instance=ExtResource("9_ynf5e")]
+z_index = 15
+layout_mode = 0
+offset_left = 785.0
+offset_top = 644.99994
+offset_right = 857.31995
+offset_bottom = 697.99994
+
+[node name="Bonus1" parent="BonusMenuBG" instance=ExtResource("9_ynf5e")]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 352.0
+offset_right = 631.0
+offset_bottom = 407.0
+scale = Vector2(1.44, 1.56)
+toggle_mode = true
+
+[node name="Bonus2" parent="BonusMenuBG" instance=ExtResource("9_ynf5e")]
+layout_mode = 0
+offset_left = 763.9998
+offset_top = 352.0
+offset_right = 838.9998
+offset_bottom = 407.0
+scale = Vector2(1.44, 1.56)
+toggle_mode = true
+
+[node name="Bonus3" parent="BonusMenuBG" instance=ExtResource("9_ynf5e")]
+layout_mode = 0
+offset_left = 963.9999
+offset_top = 352.0
+offset_right = 1038.9999
+offset_bottom = 407.0
+scale = Vector2(1.44, 1.56)
+toggle_mode = true
+
 [connection signal="input_event" from="HandleBar" to="." method="_on_handle_bar_input_event"]
 [connection signal="toggled" from="ButtonsMulti/TextureButton" to="Image Gen" method="_on_texture_button_toggled"]
 [connection signal="toggled" from="ButtonsMulti/TextureButton2" to="Image Gen" method="_on_texture_button_2_toggled"]
@@ -318,7 +399,14 @@ vertical_alignment = 1
 [connection signal="pressed" from="MenuButtons/MenuButton1" to="Image Gen" method="_on_menu_button_1_pressed"]
 [connection signal="toggled" from="AutoPlayButton" to="Image Gen" method="_on_auto_play_button_toggled"]
 [connection signal="timeout" from="AutoPlayButton/Timer" to="Image Gen" method="_on_timer_timeout"]
+[connection signal="pressed" from="BonusSpinsButton" to="Image Gen" method="_on_bonus_spins_button_pressed"]
 [connection signal="mouse_shape_entered" from="TrinketsIcons/DiamondToken/Area2D" to="TrinketsIcons" method="_on_area_2d_mouse_shape_entered"]
 [connection signal="mouse_shape_exited" from="TrinketsIcons/DiamondToken/Area2D" to="TrinketsIcons" method="_on_area_2d_mouse_shape_exited"]
+[connection signal="pressed" from="BonusMenuBG/BackButton" to="BonusMenuBG" method="_on_back_button_pressed"]
+[connection signal="pressed" from="BonusMenuBG/BuyButton" to="BonusMenuBG" method="_on_buy_button_pressed"]
+[connection signal="toggled" from="BonusMenuBG/Bonus1" to="BonusMenuBG" method="_on_bonus_1_toggled"]
+[connection signal="toggled" from="BonusMenuBG/Bonus2" to="BonusMenuBG" method="_on_bonus_2_toggled"]
+[connection signal="toggled" from="BonusMenuBG/Bonus3" to="BonusMenuBG" method="_on_bonus_3_toggled"]
 
 [editable path="AutoPlayButton"]
+[editable path="BonusSpinsButton"]
