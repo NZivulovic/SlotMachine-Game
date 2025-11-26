@@ -1,11 +1,12 @@
-Update nach 2 Wochen:
+# Slot Machine Demo - Godot Game Engine
 
-Main Scripts im repo: image_gen.gd, item_shop.gd, buy_interface.gd   - gerne anschauen
+## Update - (21.11.2025)
+
 
 ![animation](https://github.com/NZivulovic/SlotMachine-Game/blob/343948c661b84fe94aa167bc8aac15f8657d187e/Timeline%201.webp)
+Main Scripts im repo: image_gen.gd, item_shop.gd, buy_interface.gd - gerne anschauen.
 
-
-Geplante Updates:
+## Geplante Updates:
 - Item Shop (Boosters, Powerups) ✅ - 1 Item fertig (Diamond Token; chance 3x 7's für eine Runde)
 - Autoplay ✅
 - inkrementaller Jackpot System ✅
